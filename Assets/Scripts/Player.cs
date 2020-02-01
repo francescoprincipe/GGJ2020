@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -20,6 +21,11 @@ public class Player : MonoBehaviour
     public Transform Hands;
     public LayerMask WhatCanBeTaken;
     public LayerMask WhereCanRelease;
+
+    private bool canSprint = true;
+    private bool stunned = false;
+    private bool isSprinting = false;
+    private float sprintMultilyer=1;
 
     void Start()
     {
@@ -46,11 +52,18 @@ public class Player : MonoBehaviour
                 Release();
             }
         }
+
+        if (canSprint && (Input.GetButtonDown(playerInput.DashInputName)))
+        {
+            Debug.Log("Tryng to sprint");
+            StartCoroutine("Sprint");
+        }
+
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = currentDirection * MovementSpeed.Evaluate(evaluatingTime);
+        rb.velocity = currentDirection * sprintMultilyer * MovementSpeed.Evaluate(evaluatingTime);
         if (currentDirection != Vector3.zero)
         {
             transform.forward = currentDirection;
@@ -58,6 +71,28 @@ public class Player : MonoBehaviour
         else
         {
             evaluatingTime = 0f;
+        }
+    }
+
+    private  IEnumerator Sprint()
+    {
+        Debug.Log("SPRINTTTT");
+        isSprinting = true;
+        canSprint = false;
+        stunned = true;
+        sprintMultilyer = 3;
+        yield return new WaitForSeconds(.2f);
+        sprintMultilyer = 1;
+        canSprint = true;
+        isSprinting = false;
+    }
+
+    private void OnCollisionEnter(Collision coll)
+    {
+        if (isSprinting && coll.gameObject.name.Equals("Player 2"))
+        {
+            Destroy(gameObject);
+            Destroy(coll.gameObject);
         }
     }
 
