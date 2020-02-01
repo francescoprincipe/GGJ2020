@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public PlayerInput playerInput;
+    public PlayerInfo playerInfo;
 
     private Rigidbody rb;
     private GameObject itemInHands;
@@ -71,17 +72,13 @@ public class Player : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(Hands.position, GrabRange, WhereCanRelease);
         if (colliders.Length > 0 && !canTakeItems)
         {
-            var workbench = colliders[0].gameObject.GetComponent<Workbench>();
-            if (workbench != null) {
-                workbench.SetItem(itemInHands, this);
-            }
-            else
+            var iterable = colliders[0].gameObject.GetComponent<IIterable>();
+            if(iterable != null)
             {
-                itemInHands.transform.position = new Vector3(colliders[0].transform.position.x, colliders[0].transform.position.y + colliders[0].transform.localScale.y / 2, colliders[0].transform.position.z);
-                itemInHands.transform.parent = null;
+                iterable.SetItem(itemInHands.GetComponent<Item>(), this);
+                canTakeItems = true;
+                itemInHands = null;
             }
-            canTakeItems = true;
-            itemInHands = null;
         }
     }
 

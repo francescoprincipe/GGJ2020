@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Workbench : MonoBehaviour
+public class Workbench : MonoBehaviour, IIterable
 {
     public int workbanchLevel = 0;
 
@@ -10,9 +10,9 @@ public class Workbench : MonoBehaviour
 
     public Canvas canvas;
 
-    private GameObject item;
+    private Item item;
 
-    public void SetItem(GameObject item, Player player)
+    public void SetItem(Item item, Player player)
     {
         this.item = item;
         this.item.transform.position = itemPosition;

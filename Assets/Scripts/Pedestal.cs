@@ -2,14 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pedestal : MonoBehaviour
+public class Pedestal : MonoBehaviour, IIterable
 {
-    public PedestalType PedestalType;
-}
-
-public enum PedestalType
-{
-    Normal = 0,
-    Repair = 1,
-    Points = 2
+    public void SetItem(Item item, Player player)
+    {
+        item.transform.parent = null;
+        item.transform.position = transform.position;
+    }
 }
