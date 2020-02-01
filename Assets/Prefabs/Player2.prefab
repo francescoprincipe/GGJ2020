@@ -323,7 +323,7 @@ Transform:
   m_GameObject: {fileID: 3013119568120561741}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -14.8, y: 3, z: 9.3}
-  m_LocalScale: {x: 2.5, y: 1, z: 2.5}
+  m_LocalScale: {x: 2, y: 1, z: 2}
   m_Children:
   - {fileID: 939750370383318642}
   - {fileID: 3013119567043832467}
@@ -392,6 +392,9 @@ MonoBehaviour:
   WhereCanRelease:
     serializedVersion: 2
     m_Bits: 7168
+  sprintCooldown: 4
+  sprintLenght: 0.1
+  stunTime: 3
 --- !u!54 &3013119568120561738
 Rigidbody:
   m_ObjectHideFlags: 0
