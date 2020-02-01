@@ -109,5 +109,5 @@ MonoBehaviour:
   level: 2
   point: 4
   status: 0
-  repairButtonNumber: 15
-  brokeButtonNumber: 10
+  repairButtonNumber: 10
+  brokeButtonNumber: 25

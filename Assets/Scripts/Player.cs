@@ -26,7 +26,9 @@ public class Player : MonoBehaviour
     private bool canSprint = true;
     private bool stunned = false;
     private bool isSprinting = false;
-    private float sprintMultilyer=1;
+    private float sprintMultiplier=1;
+    public float stunTime = 3f;
+    bool enemyStunned = false;
 
     void Start()
     {
@@ -54,17 +56,18 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (canSprint && (Input.GetButtonDown(playerInput.DashInputName)))
+        if (canSprint && (Input.GetButtonDown(playerInput.DashInputName)) && rb.velocity != Vector3.zero)//!Mathf.Approximately(rb.velocity.magnitude,0f))
         {
             Debug.Log("Tryng to sprint");
-            StartCoroutine("Sprint");
+            StartCoroutine(Sprint());
         }
 
     }
 
     private void FixedUpdate()
     {
-        rb.velocity = currentDirection * sprintMultilyer * MovementSpeed.Evaluate(evaluatingTime);
+
+        rb.velocity = currentDirection * sprintMultiplier * MovementSpeed.Evaluate(evaluatingTime);
         if (currentDirection != Vector3.zero)
         {
             transform.forward = currentDirection;
@@ -80,21 +83,43 @@ public class Player : MonoBehaviour
         Debug.Log("SPRINTTTT");
         isSprinting = true;
         canSprint = false;
-        stunned = true;
-        sprintMultilyer = 3;
+        //stunned = true;
+        sprintMultiplier = 3;
         yield return new WaitForSeconds(.2f);
-        sprintMultilyer = 1;
+        sprintMultiplier = 1;
         canSprint = true;
         isSprinting = false;
+        if (!enemyStunned)
+            Stun();
+        enemyStunned = false;
     }
 
     private void OnCollisionEnter(Collision coll)
     {
+       
         if (isSprinting && coll.gameObject.name.Equals("Player 2"))
         {
-            Destroy(gameObject);
-            Destroy(coll.gameObject);
+            // Destroy(gameObject);
+            // Destroy(coll.gameObject);
+            coll.gameObject.GetComponent<Player>().Stun();
+            enemyStunned = true;
         }
+
+    }
+    public void Stun()
+    {
+        StartCoroutine(StunCoroutine());
+    }
+    private IEnumerator StunCoroutine()
+    {
+
+        sprintMultiplier = 0;
+        Debug.Log("STUNNATO");
+        stunned = true;
+        //animazione stun
+        yield return new WaitForSeconds(stunTime);
+        sprintMultiplier = 1;
+        stunned = false;
     }
 
     public void Interact()
