@@ -4,10 +4,11 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class timer : MonoBehaviour {
+public class Timer : MonoBehaviour {
 
     public TextMeshProUGUI timerText;
     private float time = 181;
+    bool stopCoroutine = false;
 
     void Start()
     {
@@ -26,7 +27,7 @@ public class timer : MonoBehaviour {
 
     void UpdateTimer()
     {
-        if (timerText != null)
+        if (timerText != null && !stopCoroutine)
         {
             time -= Time.deltaTime;
             string minutes = Mathf.Floor(time / 60).ToString("0");
@@ -41,6 +42,7 @@ public class timer : MonoBehaviour {
         if (time <= 0)
         {
             //EndGame();
+            stopCoroutine = true;
             timerText.text = "0:00";
         }
     }
