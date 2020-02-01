@@ -60,7 +60,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 63f6ddc219f7b0547869b96f9bc9fecd, type: 2}
+  - {fileID: 2100000, guid: 198600b6cdb522d4f99d18f49bae1b6e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -108,4 +108,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   point: 2
-  repaired: 0
+  status: 0
+  repairButtonNumber: 10
+  brokeButtonNumber: 5

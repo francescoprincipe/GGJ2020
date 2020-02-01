@@ -7,10 +7,16 @@ public class Idol : MonoBehaviour
     public int level;
     public int point;
     public IdolRepairedStatus status;
+    public int repairButtonNumber;
+    public int brokeButtonNumber;
+
+    [HideInInspector]
+    public int? myPlayerIndex = null;
 
     public void ResetStats()
     {
         status = IdolRepairedStatus.broken;
+        myPlayerIndex = null;
     }
 
     public void StatusUp()

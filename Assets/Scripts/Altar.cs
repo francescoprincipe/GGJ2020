@@ -25,11 +25,11 @@ public class Altar : MonoBehaviour, IInteractable
 
     private void Update()
     {
-        if(timerEnable)
+        if (timerEnable)
         {
             time += Time.deltaTime;
 
-            if(time >= timerTick)
+            if (time >= timerTick)
             {
                 OnTimerTick();
                 time = 0;
@@ -54,15 +54,21 @@ public class Altar : MonoBehaviour, IInteractable
             RespawnIdol();
     }
 
-    public void SetIdol(Idol idol, Player player)
+    public bool SetIdol(Idol idol, Player player)
     {
-        if(idolOnAltar == null)
+        if (idol.myPlayerIndex == player.playerIndex && idol.status == IdolRepairedStatus.repaired && idolOnAltar?.item.myPlayerIndex != player.playerIndex)
         {
+            if(idolOnAltar != null)
+            {
+                player.GiveIdol(idolOnAltar.item);
+            }
             idol.transform.parent = transform;
             idol.transform.position = transform.position;
             idolOnAltar = new IdolOnAltar(idol, player.playerInfo);
             StartTimer();
+            return true;
         }
+        return false;
     }
 
     public void RespawnIdol()

@@ -6,10 +6,15 @@ public class Pedestal : MonoBehaviour, IInteractable
 {
     public bool isOccupied = false;
 
-    public void SetIdol(Idol item, Player player)
+    public bool SetIdol(Idol item, Player player)
     {
-        isOccupied = true;
-        item.transform.parent = transform;
-        item.transform.position = new Vector3(transform.position.x, transform.position.y + transform.localScale.y, transform.position.z);
+        if(!isOccupied)
+        {
+            item.transform.parent = transform;
+            item.transform.position = new Vector3(transform.position.x, transform.position.y + transform.localScale.y, transform.position.z);
+            isOccupied = true;
+            return true;
+        }
+        return false;
     }
 }
