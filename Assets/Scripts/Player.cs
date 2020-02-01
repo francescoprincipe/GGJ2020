@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     private Rigidbody rb;
     private Collider itemInHands;
+    private BoxCollider selfCollider;
     private bool canTakeItems = true;
     private float evaluatingTime;
 
@@ -13,11 +14,13 @@ public class Player : MonoBehaviour
     public AnimationCurve MovementSpeed;
     public Transform Hands;
     public LayerMask WhatCanBeTaken;
+    public LayerMask WhereCanRelease;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        selfCollider = GetComponent<BoxCollider>();
     }
 
     // Update is called once per frame
@@ -61,18 +64,22 @@ public class Player : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(Hands.position, GrabRange, WhatCanBeTaken);
         if (colliders.Length > 0 && canTakeItems)
         {
-            itemInHands = colliders[0];
             canTakeItems = false;
+            itemInHands = colliders[0];
             itemInHands.transform.parent = transform;
+            itemInHands.transform.position = new Vector3(transform.position.x, transform.position.y + selfCollider.size.y / 2, transform.position.z);
         }
     }
 
     public void Release()
     {
-        if (!canTakeItems)
+        Collider[] colliders = Physics.OverlapSphere(Hands.position, GrabRange, WhereCanRelease);
+        if (colliders.Length > 0 && !canTakeItems)
         {
             canTakeItems = true;
+            itemInHands.transform.position = new Vector3(colliders[0].transform.position.x, colliders[0].transform.position.y + colliders[0].transform.localScale.y / 2, colliders[0].transform.position.z);
             itemInHands.transform.parent = null;
+            itemInHands = null;
         }
     }
 
