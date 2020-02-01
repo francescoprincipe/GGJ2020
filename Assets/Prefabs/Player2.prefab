@@ -356,8 +356,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e1fe0e70e6ad8469f935199bd54c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 11400000, guid: b5ca4cab911bae343b9e657a9182c0bc, type: 2}
-  playerInfo: {fileID: 11400000, guid: 7ba083fe4dae5db4caab6d2467651e8d, type: 2}
+  playerInput: {fileID: 11400000, guid: e55d5706069712e4086760805e3aeced, type: 2}
+  playerInfo: {fileID: 11400000, guid: 59fa9556d9fe59f4e848fb2c77c7e91b, type: 2}
   playerImages: {fileID: 11400000, guid: 42fb09a1bb763c548a82022c75405e74, type: 2}
   playerIndex: 1
   Image: {fileID: 0}
