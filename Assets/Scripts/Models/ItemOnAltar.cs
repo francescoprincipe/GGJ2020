@@ -1,13 +1,13 @@
 ﻿using UnityEngine;
 using UnityEditor;
 
-public class ItemOnAltar 
+public class IdolOnAltar 
 {
-    public Item item;
+    public Idol item;
     public PlayerInfo playerInfo;
     public int steps;
 
-    public ItemOnAltar(Item item, PlayerInfo playerInfo)
+    public IdolOnAltar(Idol item, PlayerInfo playerInfo)
     {
         this.item = item;
         this.playerInfo = playerInfo;

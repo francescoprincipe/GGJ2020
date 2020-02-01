@@ -10,9 +10,9 @@ public class Workbench : MonoBehaviour, IInteractable
 
     public Canvas canvas;
 
-    private Item item;
+    private Idol item;
 
-    public void SetItem(Item item, Player player)
+    public void SetIdol(Idol item, Player player)
     {
         this.item = item;
         this.item.transform.position = itemPosition;

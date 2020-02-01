@@ -1,4 +1,4 @@
 ﻿public interface IInteractable
 {
-    void SetItem(Item item, Player player);
+    void SetIdol(Idol item, Player player);
 }

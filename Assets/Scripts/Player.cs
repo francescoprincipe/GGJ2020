@@ -71,6 +71,11 @@ public class Player : MonoBehaviour
         {
             canTakeItems = false;
             itemInHands = colliders[0].gameObject;
+
+            var pedestal = itemInHands.transform.parent.GetComponent<Pedestal>();
+            if(pedestal != null)
+                pedestal.GetComponent<Pedestal>().isOccupied = false;
+
             itemInHands.transform.parent = transform;
             itemInHands.transform.position = new Vector3(transform.position.x, transform.position.y + selfCollider.size.y / 2, transform.position.z);
         }
@@ -84,7 +89,7 @@ public class Player : MonoBehaviour
             var iterable = colliders[0].gameObject.GetComponent<IInteractable>();
             if(iterable != null)
             {
-                iterable.SetItem(itemInHands.GetComponent<Item>(), this);
+                iterable.SetIdol(itemInHands.GetComponent<Idol>(), this);
                 canTakeItems = true;
                 itemInHands = null;
             }
