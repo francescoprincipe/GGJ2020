@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Player : MonoBehaviour
 {
@@ -15,17 +13,19 @@ public class Player : MonoBehaviour
 
     private Vector3 currentDirection;
 
+    [HideInInspector]
+    public PlayerImage Image;
     public float GrabRange;
     public AnimationCurve MovementSpeed;
     public Transform Hands;
     public LayerMask WhatCanBeTaken;
     public LayerMask WhereCanRelease;
-    public bool canMove = true;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         selfCollider = GetComponent<BoxCollider>();
+        Image = GetComponentInChildren<PlayerImage>();
     }
 
     void Update()
@@ -50,17 +50,14 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(canMove)
+        rb.velocity = currentDirection * MovementSpeed.Evaluate(evaluatingTime);
+        if (currentDirection != Vector3.zero)
         {
-            rb.velocity = currentDirection * MovementSpeed.Evaluate(evaluatingTime);
-            if (currentDirection != Vector3.zero)
-            {
-                transform.forward = currentDirection;
-            }
-            else
-            {
-                evaluatingTime = 0f;
-            }
+            transform.forward = currentDirection;
+        }
+        else
+        {
+            evaluatingTime = 0f;
         }
     }
 
@@ -72,9 +69,11 @@ public class Player : MonoBehaviour
             canTakeItems = false;
             itemInHands = colliders[0].gameObject;
 
-            var pedestal = itemInHands.transform.parent.GetComponent<Pedestal>();
-            if(pedestal != null)
+            Pedestal pedestal = itemInHands.transform.parent.GetComponent<Pedestal>();
+            if (pedestal != null)
+            {
                 pedestal.GetComponent<Pedestal>().isOccupied = false;
+            }
 
             itemInHands.transform.parent = transform;
             itemInHands.transform.position = new Vector3(transform.position.x, transform.position.y + selfCollider.size.y / 2, transform.position.z);
@@ -87,7 +86,7 @@ public class Player : MonoBehaviour
         if (colliders.Length > 0 && !canTakeItems)
         {
             var iterable = colliders[0].gameObject.GetComponent<IInteractable>();
-            if(iterable != null)
+            if (iterable != null)
             {
                 iterable.SetIdol(itemInHands.GetComponent<Idol>(), this);
                 canTakeItems = true;
