@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class Pedestal : MonoBehaviour, IInteractable
 {
-    public void SetItem(Item item, Player player)
+    public bool isOccupied = false;
+
+    public void SetIdol(Idol item, Player player)
     {
-        item.transform.parent = null;
-        item.transform.position = transform.position;
+        isOccupied = true;
+        item.transform.parent = transform;
+        item.transform.position = new Vector3(transform.position.x, transform.position.y + transform.localScale.y, transform.position.z);
     }
 }

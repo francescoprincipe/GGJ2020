@@ -5,44 +5,71 @@ using UnityEngine;
 
 public class Altar : MonoBehaviour, IInteractable
 {
-    private List<ItemOnAltar> items = new List<ItemOnAltar>();
-    private Timer pointsStepTimer;
+    private IdolOnAltar idolOnAltar;
+
+    [SerializeField] private IdolsManager idolManager = null;
 
     [Tooltip("In seconds")]
     public int timerTick;
     [Tooltip("When number is reached, the item will disappear")]
     public float itemIterations;
 
-    private void Start()
+    private float time;
+    private bool timerEnable = false;
+
+    private void StartTimer()
     {
-        SetUpTimer();
+        timerEnable = true;
+        time = 0;
     }
 
-    private void SetUpTimer()
+    private void Update()
     {
-        pointsStepTimer = new Timer(timerTick * 1000);
-        pointsStepTimer.Elapsed += OnTimerTick;
-        pointsStepTimer.AutoReset = true;
-        pointsStepTimer.Enabled = true;
-    }
-
-    private void OnTimerTick(object sender, ElapsedEventArgs e)
-    {
-        print("Tick");
-        for (int i = 0; i < items.Count; i++)
+        if(timerEnable)
         {
-            if(items[i].steps < itemIterations)
+            time += Time.deltaTime;
+
+            if(time >= timerTick)
             {
-                items[i].steps++;
-                items[i].playerInfo.points += items[i].item.point;
+                OnTimerTick();
+                time = 0;
             }
         }
     }
 
-    public void SetItem(Item item, Player player)
+    private void StopTimer()
     {
-        item.transform.parent = null;
-        item.transform.position = transform.position;
-        items.Add(new ItemOnAltar(item, player.playerInfo));
+        timerEnable = false;
+    }
+
+    private void OnTimerTick()
+    {
+        print("Tick");
+        if (idolOnAltar.steps < itemIterations)
+        {
+            idolOnAltar.steps++;
+            idolOnAltar.playerInfo.points += idolOnAltar.item.point;
+        }
+        else
+            RespawnIdol();
+    }
+
+    public void SetIdol(Idol idol, Player player)
+    {
+        if(idolOnAltar == null)
+        {
+            idol.transform.parent = transform;
+            idol.transform.position = transform.position;
+            idolOnAltar = new IdolOnAltar(idol, player.playerInfo);
+            StartTimer();
+        }
+    }
+
+    public void RespawnIdol()
+    {
+        StopTimer();
+        var idol = idolOnAltar.item;
+        idolOnAltar = null;
+        idolManager.SpawnIdol(idol);
     }
 }
