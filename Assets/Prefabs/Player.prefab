@@ -170,6 +170,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInput: {fileID: 11400000, guid: b5ca4cab911bae343b9e657a9182c0bc, type: 2}
+  playerInfo: {fileID: 11400000, guid: 7ba083fe4dae5db4caab6d2467651e8d, type: 2}
   GrabRange: 1
   MovementSpeed:
     serializedVersion: 2
@@ -201,7 +202,8 @@ MonoBehaviour:
     m_Bits: 512
   WhereCanRelease:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 7168
+  canMove: 1
 --- !u!54 &3698062818893578039
 Rigidbody:
   m_ObjectHideFlags: 0

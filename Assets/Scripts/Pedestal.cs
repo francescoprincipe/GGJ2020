@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pedestal : MonoBehaviour, IIterable
+public class Pedestal : MonoBehaviour, IInteractable
 {
     public void SetItem(Item item, Player player)
     {

@@ -5,5 +5,5 @@ public class PlayerInput : ScriptableObject
 {
     public string HorizontalInputName;
     public string VerticalInputName;
-    public string ItercationInputName;
+    public string InteractionInputName;
 }

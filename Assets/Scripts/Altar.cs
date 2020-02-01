@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Timers;
 using UnityEngine;
 
-public class Altar : MonoBehaviour, IIterable
+public class Altar : MonoBehaviour, IInteractable
 {
     private List<ItemOnAltar> items = new List<ItemOnAltar>();
     private Timer pointsStepTimer;
 
     [Tooltip("In seconds")]
     public int timerTick;
+    [Tooltip("When number is reached, the item will disappear")]
+    public float itemIterations;
 
     private void Start()
     {
@@ -29,7 +31,7 @@ public class Altar : MonoBehaviour, IIterable
         print("Tick");
         for (int i = 0; i < items.Count; i++)
         {
-            if(items[i].steps < 5)
+            if(items[i].steps < itemIterations)
             {
                 items[i].steps++;
                 items[i].playerInfo.points += items[i].item.point;

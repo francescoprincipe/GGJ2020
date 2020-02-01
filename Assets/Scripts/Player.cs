@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     private GameObject itemInHands;
     private BoxCollider selfCollider;
+    private float evaluatingTime;
     private bool canTakeItems = true;
 
     private Vector3 currentDirection;
@@ -29,8 +30,12 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        currentDirection = new Vector3(Input.GetAxis(playerInput.HorizontalInputName), 0f, Input.GetAxis(playerInput.VerticalInputName));
-        if (Input.GetButtonDown(playerInput.ItercationInputName))
+        currentDirection = new Vector3(Input.GetAxisRaw(playerInput.HorizontalInputName), 0f, Input.GetAxisRaw(playerInput.VerticalInputName)).normalized;
+        if (currentDirection != Vector3.zero)
+        {
+            evaluatingTime += Time.deltaTime;
+        }
+        if (Input.GetButtonDown(playerInput.InteractionInputName))
         {
             if (canTakeItems)
             {
@@ -47,10 +52,14 @@ public class Player : MonoBehaviour
     {
         if(canMove)
         {
-            rb.velocity = currentDirection * 5;
+            rb.velocity = currentDirection * MovementSpeed.Evaluate(evaluatingTime);
             if (currentDirection != Vector3.zero)
             {
                 transform.forward = currentDirection;
+            }
+            else
+            {
+                evaluatingTime = 0f;
             }
         }
     }
@@ -72,7 +81,7 @@ public class Player : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(Hands.position, GrabRange, WhereCanRelease);
         if (colliders.Length > 0 && !canTakeItems)
         {
-            var iterable = colliders[0].gameObject.GetComponent<IIterable>();
+            var iterable = colliders[0].gameObject.GetComponent<IInteractable>();
             if(iterable != null)
             {
                 iterable.SetItem(itemInHands.GetComponent<Item>(), this);

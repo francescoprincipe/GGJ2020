@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HorizontalInputName: Horizontal_1
   VerticalInputName: Vertical_1
-  ItercationInputName: Iteraction_1
+  InteractionInputName: Interaction_1

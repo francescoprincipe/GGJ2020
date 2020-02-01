@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Workbench : MonoBehaviour, IIterable
+public class Workbench : MonoBehaviour, IInteractable
 {
     public int workbanchLevel = 0;
 
