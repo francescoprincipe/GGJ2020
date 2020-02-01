@@ -99,7 +99,7 @@ public class Player : MonoBehaviour {
     private void OnCollisionEnter(Collision coll)
     {
 
-        if (isSprinting && (coll.gameObject.name.Equals("Player 2") || coll.gameObject.name.Equals("Player")))
+        if (isSprinting && (coll.gameObject.name.Equals("Player2") || coll.gameObject.name.Equals("Player")))
         {
             coll.gameObject.GetComponent<Player>().Stun();
         }
