@@ -126,8 +126,12 @@ public class Player : MonoBehaviour {
         Collider[] colliders = Physics.OverlapSphere(Hands.position, GrabRange, WhatCanBeTaken);
         if (colliders.Length > 0 && canTakeItems)
         {
-            canTakeItems = false;
             itemInHands = colliders[0].gameObject.GetComponent<Idol>();
+            if (itemInHands.myPlayerIndex != null && itemInHands.myPlayerIndex != playerIndex)
+            {
+                return;
+            }
+            canTakeItems = false;
 
             if(itemInHands.myPlayerIndex == playerIndex)
             {
