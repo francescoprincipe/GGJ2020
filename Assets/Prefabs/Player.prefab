@@ -103,7 +103,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3698062817829377519}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 1.5}
+  m_LocalPosition: {x: 0, y: -0.03, z: 1.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3698062818893578036}
@@ -169,11 +169,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e1fe0e70e6ad8469f935199bd54c3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MovementSpeed: 20
+  playerInput: {fileID: 11400000, guid: b5ca4cab911bae343b9e657a9182c0bc, type: 2}
+  GrabRange: 1
+  MovementSpeed:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 10
+      outSlope: 10
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 10
+      inSlope: 10
+      outSlope: 10
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   Hands: {fileID: 3698062817829377518}
   WhatCanBeTaken:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 512
+  WhereCanRelease:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!54 &3698062818893578039
 Rigidbody:
   m_ObjectHideFlags: 0

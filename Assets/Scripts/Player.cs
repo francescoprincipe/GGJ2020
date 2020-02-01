@@ -4,30 +4,32 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    public PlayerInput playerInput;
+
     private Rigidbody rb;
-    private Collider itemInHands;
+    private GameObject itemInHands;
     private BoxCollider selfCollider;
     private bool canTakeItems = true;
-    private float evaluatingTime;
+
+    private Vector3 currentDirection;
 
     public float GrabRange;
     public AnimationCurve MovementSpeed;
     public Transform Hands;
     public LayerMask WhatCanBeTaken;
     public LayerMask WhereCanRelease;
+    public bool canMove = true;
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         selfCollider = GetComponent<BoxCollider>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        Move();
-        if (Input.GetKeyDown(KeyCode.E))
+        currentDirection = new Vector3(Input.GetAxis(playerInput.HorizontalInputName), 0f, Input.GetAxis(playerInput.VerticalInputName));
+        if (Input.GetButtonDown(playerInput.ItercationInputName))
         {
             if (canTakeItems)
             {
@@ -40,22 +42,15 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void Move()
+    private void FixedUpdate()
     {
-        evaluatingTime += Time.deltaTime;
-        rb.velocity = new Vector3(Input.GetAxisRaw("Horizontal_1"), 0f, Input.GetAxisRaw("Vertical_1")).normalized * MovementSpeed.Evaluate(evaluatingTime);
-        Flip(rb.velocity.normalized);
-        if (rb.velocity == Vector3.zero)
+        if(canMove)
         {
-            evaluatingTime = 0f;
-        }
-    }
-
-    public void Flip(Vector3 direction)
-    {
-        if (direction != Vector3.zero)
-        {
-            transform.forward = direction;
+            rb.velocity = currentDirection * 5;
+            if (currentDirection != Vector3.zero)
+            {
+                transform.forward = currentDirection;
+            }
         }
     }
 
@@ -65,7 +60,7 @@ public class Player : MonoBehaviour
         if (colliders.Length > 0 && canTakeItems)
         {
             canTakeItems = false;
-            itemInHands = colliders[0];
+            itemInHands = colliders[0].gameObject;
             itemInHands.transform.parent = transform;
             itemInHands.transform.position = new Vector3(transform.position.x, transform.position.y + selfCollider.size.y / 2, transform.position.z);
         }
@@ -76,9 +71,16 @@ public class Player : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(Hands.position, GrabRange, WhereCanRelease);
         if (colliders.Length > 0 && !canTakeItems)
         {
+            var workbench = colliders[0].gameObject.GetComponent<Workbench>();
+            if (workbench != null) {
+                workbench.SetItem(itemInHands, this);
+            }
+            else
+            {
+                itemInHands.transform.position = new Vector3(colliders[0].transform.position.x, colliders[0].transform.position.y + colliders[0].transform.localScale.y / 2, colliders[0].transform.position.z);
+                itemInHands.transform.parent = null;
+            }
             canTakeItems = true;
-            itemInHands.transform.position = new Vector3(colliders[0].transform.position.x, colliders[0].transform.position.y + colliders[0].transform.localScale.y / 2, colliders[0].transform.position.z);
-            itemInHands.transform.parent = null;
             itemInHands = null;
         }
     }
