@@ -1,4 +1,4 @@
 ﻿public interface IInteractable
 {
-    void SetIdol(Idol item, Player player);
+    bool SetIdol(Idol item, Player player);
 }

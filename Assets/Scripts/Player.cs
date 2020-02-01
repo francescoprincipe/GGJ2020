@@ -97,10 +97,12 @@ public class Player : MonoBehaviour
             var interactable = colliders[0].gameObject.GetComponent<IInteractable>();
             if (interactable != null)
             {
-                interactable.SetIdol(itemInHands.GetComponent<Idol>(), this);
-                Image.ChangeImageState();
-                canTakeItems = true;
-                itemInHands = null;
+                if (interactable.SetIdol(itemInHands.GetComponent<Idol>(), this))
+                {
+                    Image.ChangeImageState();
+                    canTakeItems = true;
+                    itemInHands = null;
+                }
             }
         }
     }
