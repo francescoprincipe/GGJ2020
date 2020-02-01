@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -308,7 +308,7 @@ GameObject:
   - component: {fileID: 3698062818893578038}
   - component: {fileID: 3698062818893578039}
   m_Layer: 8
-  m_Name: Player
+  m_Name: Player1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -358,6 +358,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInput: {fileID: 11400000, guid: b5ca4cab911bae343b9e657a9182c0bc, type: 2}
   playerInfo: {fileID: 11400000, guid: 7ba083fe4dae5db4caab6d2467651e8d, type: 2}
+  playerImages: {fileID: 11400000, guid: 42fb09a1bb763c548a82022c75405e74, type: 2}
   playerIndex: 0
   Image: {fileID: 0}
   GrabRange: 3
@@ -392,6 +393,9 @@ MonoBehaviour:
   WhereCanRelease:
     serializedVersion: 2
     m_Bits: 7168
+  sprintCooldown: 4
+  sprintLenght: 0.1
+  stunTime: 3
 --- !u!54 &3698062818893578039
 Rigidbody:
   m_ObjectHideFlags: 0

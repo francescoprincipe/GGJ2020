@@ -4,6 +4,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
     public PlayerInput playerInput;
     public PlayerInfo playerInfo;
+    public PlayerImages playerImages;
     public int playerIndex;
 
     private Rigidbody rb;
@@ -127,6 +128,43 @@ public class Player : MonoBehaviour {
         {
             canTakeItems = false;
             itemInHands = colliders[0].gameObject.GetComponent<Idol>();
+
+            if(itemInHands.myPlayerIndex == playerIndex)
+            {
+                if (itemInHands.level == 1)
+                {
+                    if (itemInHands.status == IdolRepairedStatus.broken)
+                    {
+                        Image.ChangeImageSprite(playerImages.Workbench_1);
+                    }
+                    else if (itemInHands.status == IdolRepairedStatus.repaired)
+                    {
+                        Image.ChangeImageSprite(playerImages.Altar);
+                    }
+                }
+                else if (itemInHands.level == 2)
+                {
+                    if (itemInHands.status == IdolRepairedStatus.broken)
+                    {
+                        Image.ChangeImageSprite(playerImages.Workbench_1);
+                    }
+                    else if (itemInHands.status == IdolRepairedStatus.semiBroken)
+                    {
+                        Image.ChangeImageSprite(playerImages.Workbench_2);
+                    }
+                    else if (itemInHands.status == IdolRepairedStatus.repaired)
+                    {
+                        Image.ChangeImageSprite(playerImages.Altar);
+                    }
+                }
+            }
+            else
+            {
+                if (itemInHands.status != IdolRepairedStatus.broken)
+                {
+                    Image.ChangeImageSprite(playerImages.Workbench_3);
+                }
+            }
 
             Pedestal pedestal = itemInHands.transform.parent.GetComponent<Pedestal>();
             if (pedestal != null)
