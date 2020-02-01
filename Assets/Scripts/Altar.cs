@@ -56,8 +56,12 @@ public class Altar : MonoBehaviour, IInteractable
 
     public void SetIdol(Idol idol, Player player)
     {
-        if(idolOnAltar == null)
+        if(idol.myPlayerIndex == player.playerIndex && idol.status == IdolRepairedStatus.repaired && idolOnAltar?.item.myPlayerIndex != player.playerIndex)
         {
+            if(idolOnAltar != null)
+            {
+                player.GiveIdol(idolOnAltar.item);
+            }
             idol.transform.parent = transform;
             idol.transform.position = transform.position;
             idolOnAltar = new IdolOnAltar(idol, player.playerInfo);

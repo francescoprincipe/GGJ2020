@@ -108,4 +108,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   level: 1
   point: 2
-  repaired: 0
+  status: 0
+  repairButtonNumber: 10
+  brokeButtonNumber: 5

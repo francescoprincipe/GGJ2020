@@ -4,10 +4,10 @@ public class Workbench : MonoBehaviour, IInteractable
 {
     public WorkbenchImages WorkbenchImages;
     public WorkbenchInput WorkbenchInput;
-    [Range(1,2)]
+    [Range(1,3)]
     public int workbenchLevel = 1;
-    public int QTECounter;
 
+    private int QTECounter;
     private int currentKeyCodeIndex;
     private Player currentPlayer;
     private bool isInQTE = false;
@@ -55,7 +55,33 @@ public class Workbench : MonoBehaviour, IInteractable
         idol = item;
         idol.transform.position = new Vector3(transform.position.x, transform.position.y + selfCollider.size.y / 2, transform.position.z);
         idol.transform.parent = transform;
-        PlayQuickTimeEvent();
+
+        switch (workbenchLevel)
+        {
+            case 1:
+                if (idol.status == IdolRepairedStatus.broken && player.playerIndex == idol.myPlayerIndex)
+                {
+                    QTECounter = idol.repairButtonNumber;
+                    PlayQuickTimeEvent();
+                }
+                break;
+            case 2:
+                if (idol.status == IdolRepairedStatus.semiBroken && player.playerIndex == idol.myPlayerIndex)
+                {
+                    QTECounter = idol.repairButtonNumber;
+                    PlayQuickTimeEvent();
+                }
+                break;
+            case 3:
+                if (idol.status != IdolRepairedStatus.broken && player.playerIndex != idol.myPlayerIndex)
+                {
+                    QTECounter = idol.brokeButtonNumber;
+                    PlayQuickTimeEvent();
+                }
+                break;
+            default:
+                break;
+        } 
     }
 
     public void PlayQuickTimeEvent()
@@ -75,7 +101,15 @@ public class Workbench : MonoBehaviour, IInteractable
     {
         isInQTE = false;
         currentPlayer.Image.ChangeImageState();
-        currentPlayer = null;
         currentQTECounter = 0;
+
+        if(workbenchLevel == 3)
+        {
+            idol.Broke();
+        }
+        else
+        {
+            idol.StatusUp();
+        }
     }
 }

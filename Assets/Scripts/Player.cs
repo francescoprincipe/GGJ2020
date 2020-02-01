@@ -4,9 +4,10 @@ public class Player : MonoBehaviour
 {
     public PlayerInput playerInput;
     public PlayerInfo playerInfo;
+    public int playerIndex;
 
     private Rigidbody rb;
-    private GameObject itemInHands;
+    private Idol itemInHands;
     private BoxCollider selfCollider;
     private float evaluatingTime;
     private bool canTakeItems = true;
@@ -67,7 +68,7 @@ public class Player : MonoBehaviour
         if (colliders.Length > 0 && canTakeItems)
         {
             canTakeItems = false;
-            itemInHands = colliders[0].gameObject;
+            itemInHands = colliders[0].gameObject.GetComponent<Idol>();
 
             Pedestal pedestal = itemInHands.transform.parent.GetComponent<Pedestal>();
             if (pedestal != null)
@@ -101,6 +102,13 @@ public class Player : MonoBehaviour
                 itemInHands = null;
             }
         }
+    }
+
+    public void GiveIdol(Idol idol)
+    {
+        itemInHands = idol;
+        itemInHands.transform.parent = transform;
+        itemInHands.transform.position = new Vector3(transform.position.x, transform.position.y + selfCollider.size.y / 2, transform.position.z);
     }
 
     private void OnDrawGizmos()
