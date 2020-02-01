@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1695676975099457807}
   - component: {fileID: 6454762862305614387}
   - component: {fileID: 596736985401644527}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Graphic
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -88,7 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3698062817829377518}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Hands
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -121,7 +121,7 @@ GameObject:
   - component: {fileID: 3698062818893578035}
   - component: {fileID: 3698062818893578038}
   - component: {fileID: 3698062818893578039}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}

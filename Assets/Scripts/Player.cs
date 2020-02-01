@@ -7,8 +7,9 @@ public class Player : MonoBehaviour
     private Rigidbody rb;
     private Collider itemInHands;
     private bool canTakeItems = true;
+    private float evaluatingTime;
 
-    public float MovementSpeed;
+    public AnimationCurve MovementSpeed;
     public Transform Hands;
     public LayerMask WhatCanBeTaken;
 
@@ -37,8 +38,13 @@ public class Player : MonoBehaviour
 
     public void Move()
     {
-        rb.velocity = new Vector3(Input.GetAxisRaw("Horizontal_1") * MovementSpeed * 100 * Time.deltaTime, rb.velocity.y, Input.GetAxisRaw("Vertical_1") * MovementSpeed * 100 * Time.deltaTime);
+        evaluatingTime += Time.deltaTime;
+        rb.velocity = new Vector3(Input.GetAxisRaw("Horizontal_1") * MovementSpeed.Evaluate(evaluatingTime), 0f, Input.GetAxisRaw("Vertical_1") * MovementSpeed.Evaluate(evaluatingTime));
         Flip(rb.velocity.normalized);
+        if (rb.velocity == Vector3.zero)
+        {
+            evaluatingTime = 0f;
+        }
     }
 
     public void Flip(Vector3 direction)
