@@ -289,7 +289,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3698062817829377519}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.03, z: 1.5}
+  m_LocalPosition: {x: -0.2, y: -0.03, z: 1.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3698062818893578036}
@@ -323,7 +323,7 @@ Transform:
   m_GameObject: {fileID: 3698062818893578032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.5, y: 1, z: 2.5}
   m_Children:
   - {fileID: 1695676975099457807}
   - {fileID: 3698062817829377518}
@@ -358,7 +358,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerInput: {fileID: 11400000, guid: b5ca4cab911bae343b9e657a9182c0bc, type: 2}
   playerInfo: {fileID: 11400000, guid: 7ba083fe4dae5db4caab6d2467651e8d, type: 2}
-  GrabRange: 1.2
+  playerIndex: 0
+  Image: {fileID: 0}
+  GrabRange: 3
   MovementSpeed:
     serializedVersion: 2
     m_Curve:
@@ -390,7 +392,6 @@ MonoBehaviour:
   WhereCanRelease:
     serializedVersion: 2
     m_Bits: 7168
-  canMove: 1
 --- !u!54 &3698062818893578039
 Rigidbody:
   m_ObjectHideFlags: 0

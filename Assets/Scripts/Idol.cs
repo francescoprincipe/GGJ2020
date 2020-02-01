@@ -16,6 +16,7 @@ public class Idol : MonoBehaviour
     public void ResetStats()
     {
         status = IdolRepairedStatus.broken;
+        myPlayerIndex = null;
     }
 
     public void StatusUp()

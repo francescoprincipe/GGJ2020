@@ -1,9 +1,11 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Workbench : MonoBehaviour, IInteractable
 {
     public WorkbenchImages WorkbenchImages;
     public WorkbenchInput WorkbenchInput;
+    public WorkbenchInput WorkbenchInput2;
     [Range(1,3)]
     public int workbenchLevel = 1;
 
@@ -25,7 +27,18 @@ public class Workbench : MonoBehaviour, IInteractable
     {
         if (isInQTE)
         {
-            if (Input.GetKeyDown(WorkbenchInput.EventButtons[currentKeyCodeIndex]))
+            List<KeyCode> inputs;
+
+            if(idol.myPlayerIndex == 0)
+            {
+                inputs = WorkbenchInput.EventButtons;
+            }
+            else
+            {
+                inputs = WorkbenchInput2.EventButtons;
+            }
+
+            if (Input.GetKeyDown(inputs[currentKeyCodeIndex]))
             {
                 Debug.Log("Correct");
                 PlayQuickTimeEvent();
