@@ -96,12 +96,12 @@ public class Player : MonoBehaviour {
     }
 
 
-    private void OnCollisionEnter(Collision coll)
+    private void OnCollisionEnter(Collision other)
     {
 
-        if (isSprinting && (coll.gameObject.name.Equals("Player2") || coll.gameObject.name.Equals("Player")))
+        if (isSprinting && (other.gameObject.tag == "Player"))
         {
-            coll.gameObject.GetComponent<Player>().Stun();
+            other.gameObject.GetComponent<Player>().Stun();
         }
 
     }
