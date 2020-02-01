@@ -309,7 +309,7 @@ GameObject:
   - component: {fileID: 3013119568120561738}
   m_Layer: 8
   m_Name: Player2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -392,6 +392,9 @@ MonoBehaviour:
   WhereCanRelease:
     serializedVersion: 2
     m_Bits: 7168
+  sprintCooldown: 4
+  sprintLenght: 0.1
+  stunTime: 3
 --- !u!54 &3013119568120561738
 Rigidbody:
   m_ObjectHideFlags: 0
