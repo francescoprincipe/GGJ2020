@@ -75,6 +75,7 @@ public class Player : MonoBehaviour
                 pedestal.GetComponent<Pedestal>().isOccupied = false;
             }
 
+            Image.ChangeImageState();
             itemInHands.transform.parent = transform;
             itemInHands.transform.position = new Vector3(transform.position.x, transform.position.y + selfCollider.size.y / 2, transform.position.z);
         }
@@ -85,10 +86,11 @@ public class Player : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(Hands.position, GrabRange, WhereCanRelease);
         if (colliders.Length > 0 && !canTakeItems)
         {
-            var iterable = colliders[0].gameObject.GetComponent<IInteractable>();
-            if (iterable != null)
+            var interactable = colliders[0].gameObject.GetComponent<IInteractable>();
+            if (interactable != null)
             {
-                iterable.SetIdol(itemInHands.GetComponent<Idol>(), this);
+                interactable.SetIdol(itemInHands.GetComponent<Idol>(), this);
+                Image.ChangeImageState();
                 canTakeItems = true;
                 itemInHands = null;
             }

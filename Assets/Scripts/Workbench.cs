@@ -8,10 +8,10 @@ public class Workbench : MonoBehaviour, IInteractable
     public int workbenchLevel = 1;
     public int QTECounter;
 
-    private KeyCode currentKeyCode;
+    private int currentKeyCodeIndex;
     private Player currentPlayer;
-    private bool isInQTE;
-    private int currentQTECounter;
+    private bool isInQTE = false;
+    private int currentQTECounter = 0;
     private BoxCollider selfCollider;
 
     private Idol idol;
@@ -25,25 +25,26 @@ public class Workbench : MonoBehaviour, IInteractable
     {
         if (isInQTE)
         {
-            for (int i = 0; i < WorkbenchInput.EventButtons.Count; i++)
+            if (Input.GetKeyDown(WorkbenchInput.EventButtons[currentKeyCodeIndex]))
             {
-                if (Input.GetKeyDown(WorkbenchInput.EventButtons[i]) && WorkbenchInput.EventButtons[i] == currentKeyCode)
+                Debug.Log("Correct");
+                PlayQuickTimeEvent();
+                currentQTECounter++;
+                if (currentQTECounter >= QTECounter)
                 {
-                    Debug.Log("Correct!");
-                    PlayQuickTimeEvent();
-                    currentQTECounter++;
-                    if (currentQTECounter >= QTECounter)
-                    {
-                        isInQTE = false;
-                        currentPlayer.Image.ChangeImageState();
-                        currentPlayer = null;
-                    }
+                    Debug.Log("Ended quick time event!");
+                    EndQuickTimeEvent();
                 }
-                else if (Input.anyKeyDown)
-                {
-                    Debug.Log("Not correct!");
-                    PlayQuickTimeEvent();
-                }
+            }
+            else if (Input.GetAxisRaw(currentPlayer.playerInput.HorizontalInputName) != 0 || Input.GetAxisRaw(currentPlayer.playerInput.VerticalInputName) != 0)
+            {
+                Debug.Log("Ended quick time event!");
+                EndQuickTimeEvent();
+            }
+            else if (Input.anyKeyDown)
+            {
+                Debug.Log("Not correct!");
+                PlayQuickTimeEvent();
             }
         }
     }
@@ -59,9 +60,22 @@ public class Workbench : MonoBehaviour, IInteractable
 
     public void PlayQuickTimeEvent()
     {
-        isInQTE = true;
+        if (!isInQTE)
+        {
+            currentPlayer.Image.ChangeImageState();
+            isInQTE = true;
+        }
         int rngNumber = Random.Range(0, WorkbenchInput.EventButtons.Count);
-        currentKeyCode = WorkbenchInput.EventButtons[rngNumber];
+        currentKeyCodeIndex = rngNumber;
         currentPlayer.Image.ChangeImageSprite(WorkbenchImages.EventButtonImages[rngNumber]);
+        Debug.Log(currentKeyCodeIndex);
+    }
+
+    public void EndQuickTimeEvent()
+    {
+        isInQTE = false;
+        currentPlayer.Image.ChangeImageState();
+        currentPlayer = null;
+        currentQTECounter = 0;
     }
 }
