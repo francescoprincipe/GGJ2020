@@ -84,6 +84,7 @@ public class Player : MonoBehaviour
 
             Image.ChangeImageState();
             itemInHands.transform.parent = transform;
+            itemInHands.myPlayerIndex = playerIndex;
             itemInHands.transform.position = new Vector3(transform.position.x, transform.position.y + selfCollider.size.y / 2, transform.position.z);
         }
     }
