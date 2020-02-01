@@ -72,4 +72,10 @@ public class Altar : MonoBehaviour, IInteractable
         idolOnAltar = null;
         idolManager.SpawnIdol(idol);
     }
+
+    public void ResetAltar()
+    {
+        StopTimer();
+        idolOnAltar = null;
+    }
 }

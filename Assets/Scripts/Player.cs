@@ -72,7 +72,13 @@ public class Player : MonoBehaviour
             Pedestal pedestal = itemInHands.transform.parent.GetComponent<Pedestal>();
             if (pedestal != null)
             {
-                pedestal.GetComponent<Pedestal>().isOccupied = false;
+                pedestal.isOccupied = false;
+            }
+
+            Altar altar = itemInHands.transform.parent.GetComponent<Altar>();
+            if (altar != null)
+            {
+                altar.ResetAltar();
             }
 
             Image.ChangeImageState();

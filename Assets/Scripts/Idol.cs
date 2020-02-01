@@ -21,13 +21,13 @@ public class Idol : MonoBehaviour
                 status = IdolRepairedStatus.repaired;
                 break;
             case 2:
-                if(status == IdolRepairedStatus.semiBorken)
+                if(status == IdolRepairedStatus.semiBroken)
                 {
                     status = IdolRepairedStatus.repaired;
                 }
                 else
                 {
-                    status = IdolRepairedStatus.semiBorken;
+                    status = IdolRepairedStatus.semiBroken;
                 }
                 break;
         }
@@ -42,6 +42,6 @@ public class Idol : MonoBehaviour
 public enum IdolRepairedStatus
 {
     broken,
-    semiBorken,
+    semiBroken,
     repaired
 }
