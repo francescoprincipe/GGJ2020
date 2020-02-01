@@ -1,8 +1,7 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class Player : MonoBehaviour
-{
+public class Player : MonoBehaviour {
     public PlayerInput playerInput;
     public PlayerInfo playerInfo;
     public int playerIndex;
@@ -23,12 +22,13 @@ public class Player : MonoBehaviour
     public LayerMask WhatCanBeTaken;
     public LayerMask WhereCanRelease;
 
+    public float sprintCooldown = 4f;
+    public float sprintLenght = .1f;
     private bool canSprint = true;
     private bool stunned = false;
     private bool isSprinting = false;
-    private float sprintMultiplier=1;
+    private float dashMultiplier = 1;
     public float stunTime = 3f;
-    bool enemyStunned = false;
 
     void Start()
     {
@@ -56,9 +56,8 @@ public class Player : MonoBehaviour
             }
         }
 
-        if (canSprint && (Input.GetButtonDown(playerInput.DashInputName)) && rb.velocity != Vector3.zero)//!Mathf.Approximately(rb.velocity.magnitude,0f))
+        if (canSprint && (Input.GetButtonDown(playerInput.DashInputName)) && rb.velocity != Vector3.zero)
         {
-            Debug.Log("Tryng to sprint");
             StartCoroutine(Sprint());
         }
 
@@ -67,7 +66,7 @@ public class Player : MonoBehaviour
     private void FixedUpdate()
     {
 
-        rb.velocity = currentDirection * sprintMultiplier * MovementSpeed.Evaluate(evaluatingTime);
+        rb.velocity = currentDirection * dashMultiplier * MovementSpeed.Evaluate(evaluatingTime);
         if (currentDirection != Vector3.zero)
         {
             transform.forward = currentDirection;
@@ -78,31 +77,31 @@ public class Player : MonoBehaviour
         }
     }
 
-    private  IEnumerator Sprint()
+    private IEnumerator Sprint()
     {
-        Debug.Log("SPRINTTTT");
+        StartCoroutine(SprintCooldown());
+        evaluatingTime = 1;
         isSprinting = true;
-        canSprint = false;
-        //stunned = true;
-        sprintMultiplier = 3;
-        yield return new WaitForSeconds(.2f);
-        sprintMultiplier = 1;
-        canSprint = true;
+        dashMultiplier = 3;
+        yield return new WaitForSeconds(sprintLenght);
+        dashMultiplier = 1;
         isSprinting = false;
-        if (!enemyStunned)
-            Stun();
-        enemyStunned = false;
     }
 
-    private void OnCollisionEnter(Collision coll)
+    private IEnumerator SprintCooldown()
     {
-       
-        if (isSprinting && coll.gameObject.name.Equals("Player 2"))
+        canSprint = false;
+        yield return new WaitForSeconds(sprintCooldown);
+        canSprint = true;
+    }
+
+
+    private void OnCollisionEnter(Collision other)
+    {
+
+        if (isSprinting && (other.gameObject.tag == "Player"))
         {
-            // Destroy(gameObject);
-            // Destroy(coll.gameObject);
-            coll.gameObject.GetComponent<Player>().Stun();
-            enemyStunned = true;
+            other.gameObject.GetComponent<Player>().Stun();
         }
 
     }
@@ -112,13 +111,11 @@ public class Player : MonoBehaviour
     }
     private IEnumerator StunCoroutine()
     {
-
-        sprintMultiplier = 0;
-        Debug.Log("STUNNATO");
+        dashMultiplier = 0;
         stunned = true;
         //animazione stun
         yield return new WaitForSeconds(stunTime);
-        sprintMultiplier = 1;
+        dashMultiplier = 1;
         stunned = false;
     }
 
