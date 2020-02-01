@@ -62,7 +62,7 @@ public class Workbench : MonoBehaviour, IInteractable
         }
     }
 
-    public void SetIdol(Idol item, Player player)
+    public bool SetIdol(Idol item, Player player)
     {
         currentPlayer = player;
         idol = item;
@@ -94,7 +94,9 @@ public class Workbench : MonoBehaviour, IInteractable
                 break;
             default:
                 break;
-        } 
+        }
+
+        return true;
     }
 
     public void PlayQuickTimeEvent()
