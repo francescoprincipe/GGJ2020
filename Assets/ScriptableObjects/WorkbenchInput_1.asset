@@ -12,4 +12,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d94fd4970c4d8b4f85ea895a40fbae8, type: 3}
   m_Name: WorkbenchInput_1
   m_EditorClassIdentifier: 
-  EventButtons: 5e0100005f010000610100006201000063010000
+  EventButtons: 5f01000060010000610100006201000063010000

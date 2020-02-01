@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: WorkbenchImages
   m_EditorClassIdentifier: 
   EventButtonImages:
-  - {fileID: 21300000, guid: 75a82d57c9748514c9b3cc5569f390e9, type: 3}
   - {fileID: 21300000, guid: 6b12b0c1832a464429de81033b608b25, type: 3}
+  - {fileID: 21300000, guid: ed788d6bb9a00ea4e9e2fc57f445044e, type: 3}
   - {fileID: 21300000, guid: e173279db00e0a649a2f2cf088e53228, type: 3}
   - {fileID: 21300000, guid: 5d2f09d8d067c734d8f0ac799131d9df, type: 3}
   - {fileID: 21300000, guid: 8eceb3196cddd174f8495be9dbfb6776, type: 3}
