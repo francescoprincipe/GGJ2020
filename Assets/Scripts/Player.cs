@@ -37,7 +37,16 @@ public class Player : MonoBehaviour
 
     public void Move()
     {
-        rb.velocity = new Vector3(Input.GetAxisRaw("Horizontal_1") * MovementSpeed * 100 * Time.deltaTime, 0f, Input.GetAxisRaw("Vertical_1") * MovementSpeed * 100 * Time.deltaTime);
+        rb.velocity = new Vector3(Input.GetAxisRaw("Horizontal_1") * MovementSpeed * 100 * Time.deltaTime, rb.velocity.y, Input.GetAxisRaw("Vertical_1") * MovementSpeed * 100 * Time.deltaTime);
+        Flip(rb.velocity.normalized);
+    }
+
+    public void Flip(Vector3 direction)
+    {
+        if (direction != Vector3.zero)
+        {
+            transform.forward = direction;
+        }
     }
 
     public void Interact()
