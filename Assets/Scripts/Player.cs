@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private bool canTakeItems = true;
     private float evaluatingTime;
 
+    public float GrabRange;
     public AnimationCurve MovementSpeed;
     public Transform Hands;
     public LayerMask WhatCanBeTaken;
@@ -57,7 +58,7 @@ public class Player : MonoBehaviour
 
     public void Interact()
     {
-        Collider[] colliders = Physics.OverlapSphere(Hands.position, 0.5f, WhatCanBeTaken);
+        Collider[] colliders = Physics.OverlapSphere(Hands.position, GrabRange, WhatCanBeTaken);
         if (colliders.Length > 0 && canTakeItems)
         {
             itemInHands = colliders[0];
@@ -73,5 +74,11 @@ public class Player : MonoBehaviour
             canTakeItems = true;
             itemInHands.transform.parent = null;
         }
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(Hands.position, GrabRange);
     }
 }

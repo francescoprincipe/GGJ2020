@@ -248,6 +248,11 @@ PrefabInstance:
       propertyPath: WhatCanBeTaken.m_Bits
       value: 567
       objectReference: {fileID: 0}
+    - target: {fileID: 3698062818893578038, guid: 51512df7af3d87840884dab29cff318e,
+        type: 3}
+      propertyPath: GrabRange
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51512df7af3d87840884dab29cff318e, type: 3}
 --- !u!1 &705507993
