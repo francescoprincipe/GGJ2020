@@ -51,7 +51,7 @@ public class Workbench : MonoBehaviour, IInteractable
             }
             else if (Input.GetAxisRaw(currentPlayer.playerInput.HorizontalInputName) != 0 || Input.GetAxisRaw(currentPlayer.playerInput.VerticalInputName) != 0)
             {
-                Debug.Log("Ended quick time event!");
+                Debug.Log("Moved away from quick time event!");
                 EndQuickTimeEvent();
             }
             else if (Input.anyKeyDown)
@@ -116,15 +116,17 @@ public class Workbench : MonoBehaviour, IInteractable
     {
         isInQTE = false;
         currentPlayer.Image.ChangeImageState();
+        if (currentQTECounter >= QTECounter)
+        {
+            if (workbenchLevel == 3)
+            {
+                idol.Broke();
+            }
+            else
+            {
+                idol.StatusUp();
+            }
+        }
         currentQTECounter = 0;
-
-        if(workbenchLevel == 3)
-        {
-            idol.Broke();
-        }
-        else
-        {
-            idol.StatusUp();
-        }
     }
 }
