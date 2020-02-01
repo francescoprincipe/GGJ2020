@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     public void Move()
     {
         evaluatingTime += Time.deltaTime;
-        rb.velocity = new Vector3(Input.GetAxisRaw("Horizontal_1") * MovementSpeed.Evaluate(evaluatingTime), 0f, Input.GetAxisRaw("Vertical_1") * MovementSpeed.Evaluate(evaluatingTime));
+        rb.velocity = new Vector3(Input.GetAxisRaw("Horizontal_1"), 0f, Input.GetAxisRaw("Vertical_1")).normalized * MovementSpeed.Evaluate(evaluatingTime);
         Flip(rb.velocity.normalized);
         if (rb.velocity == Vector3.zero)
         {
