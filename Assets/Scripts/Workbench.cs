@@ -101,7 +101,7 @@ public class Workbench : MonoBehaviour, IInteractable
 
     public void PlayQuickTimeEvent()
     {
-        if (!isInQTE)
+        if (!isInQTE && currentPlayer.Image.enabled)
         {
             currentPlayer.Image.ChangeImageState();
             isInQTE = true;

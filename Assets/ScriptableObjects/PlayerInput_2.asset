@@ -15,3 +15,4 @@ MonoBehaviour:
   HorizontalInputName: Horizontal_2
   VerticalInputName: Vertical_2
   InteractionInputName: Interaction_2
+  DashInputName: Dash_2

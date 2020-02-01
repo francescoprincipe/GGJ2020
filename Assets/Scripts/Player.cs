@@ -35,6 +35,7 @@ public class Player : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         selfCollider = GetComponent<BoxCollider>();
         Image = GetComponentInChildren<PlayerImage>();
+        playerInfo.points = 0f;
     }
 
     void Update()
