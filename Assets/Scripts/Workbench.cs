@@ -63,6 +63,7 @@ public class Workbench : MonoBehaviour, IInteractable {
         idol = item;
         idol.transform.position = new Vector3(transform.position.x, transform.position.y + selfCollider.size.y / 2, transform.position.z);
         idol.transform.parent = transform;
+        idol.onPlayer = false;
 
         switch (workbenchLevel)
         {
@@ -103,6 +104,7 @@ public class Workbench : MonoBehaviour, IInteractable {
         }
         int rngNumber = Random.Range(0, GetInputs().Count);
         currentKeyCodeIndex = rngNumber;
+        idol.onPlayer = true;
         currentPlayer.Image.ChangeImageSprite(WorkbenchImages.EventButtonImages[rngNumber]);
     }
 
@@ -122,6 +124,7 @@ public class Workbench : MonoBehaviour, IInteractable {
             }
         }
         currentQTECounter = 0;
+        idol.onPlayer = false;
     }
 
     private List<KeyCode> GetInputs()
