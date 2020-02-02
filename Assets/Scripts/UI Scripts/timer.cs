@@ -50,6 +50,6 @@ public class Timer : MonoBehaviour {
 
     private void EndGame()
     {
-        SceneManager.LoadScene("EndGame");
+        SceneManager.LoadScene("EndScene");
     }
 }
