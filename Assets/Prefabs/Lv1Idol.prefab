@@ -111,8 +111,8 @@ MonoBehaviour:
   level: 1
   point: 2
   status: 0
-  repairButtonNumber: 2
-  brokeButtonNumber: 18
+  repairButtonNumber: 7
+  brokeButtonNumber: 14
 --- !u!1001 &4009354092866977499
 PrefabInstance:
   m_ObjectHideFlags: 0
