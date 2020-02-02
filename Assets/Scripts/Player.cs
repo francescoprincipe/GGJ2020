@@ -12,6 +12,7 @@ public class Player : MonoBehaviour {
     private BoxCollider selfCollider;
     private float evaluatingTime;
     public bool canTakeItems = true;
+    private ParticleSystem particleSystem;
 
     private Vector3 currentDirection;
 
@@ -38,6 +39,8 @@ public class Player : MonoBehaviour {
         rb = GetComponent<Rigidbody>();
         selfCollider = GetComponent<BoxCollider>();
         Image = GetComponentInChildren<PlayerImage>();
+        particleSystem = GetComponentInChildren<ParticleSystem>();
+        particleSystem.enableEmission = false;
         playerInfo.points = 0f;
     }
 
@@ -47,7 +50,13 @@ public class Player : MonoBehaviour {
         if (currentDirection != Vector3.zero)
         {
             evaluatingTime += Time.deltaTime;
+            particleSystem.enableEmission = true;
         }
+        else
+        {
+            particleSystem.enableEmission = false;
+        }
+
         if (Input.GetButtonDown(playerInput.InteractionInputName))
         {
             if (canTakeItems)
@@ -64,7 +73,6 @@ public class Player : MonoBehaviour {
         {
             StartCoroutine(Sprint());
         }
-
     }
 
     private void FixedUpdate()
