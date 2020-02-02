@@ -112,7 +112,7 @@ MonoBehaviour:
   level: 2
   point: 4
   status: 0
-  repairButtonNumber: 10
+  repairButtonNumber: 12
   brokeButtonNumber: 25
 --- !u!1 &8774868767856108155
 GameObject:
