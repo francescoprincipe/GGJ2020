@@ -10,6 +10,7 @@ public class Idol : MonoBehaviour
     public IdolRepairedStatus status;
     public int repairButtonNumber;
     public int brokeButtonNumber;
+    public bool onPlayer = false;
 
     [HideInInspector]
     public int? myPlayerIndex = null;

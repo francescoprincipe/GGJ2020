@@ -141,7 +141,7 @@ public class Player : MonoBehaviour {
     public void Interact()
     {
         Collider[] colliders = Physics.OverlapSphere(Hands.position, GrabRange, WhatCanBeTaken);
-        if (colliders.Length > 0 && canTakeItems)
+        if (colliders.Length > 0 && canTakeItems && !colliders[0].gameObject.GetComponent<Idol>().onPlayer)
         {
             itemInHands = colliders[0].gameObject.GetComponent<Idol>();
             canTakeItems = false;
@@ -196,6 +196,7 @@ public class Player : MonoBehaviour {
             Image.ChangeImageState();
             itemInHands.transform.parent = transform;
             itemInHands.transform.position = new Vector3(transform.position.x, transform.position.y + selfCollider.size.y / 2, transform.position.z);
+            itemInHands.onPlayer = true;
         }
     }
 

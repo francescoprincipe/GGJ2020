@@ -12,6 +12,7 @@ public class Pedestal : MonoBehaviour, IInteractable
         {
             item.transform.parent = transform;
             item.transform.position = new Vector3(transform.position.x, transform.position.y + transform.localScale.y, transform.position.z);
+            item.onPlayer = false;
             isOccupied = true;
             return true;
         }
