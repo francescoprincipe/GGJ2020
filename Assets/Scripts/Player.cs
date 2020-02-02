@@ -9,7 +9,7 @@ public class Player : MonoBehaviour {
 
     private Rigidbody rb;
     private Idol itemInHands;
-    private BoxCollider selfCollider;
+    private CapsuleCollider selfCollider;
     private float evaluatingTime;
     public bool canTakeItems = true;
     private ParticleSystem particleSystem;
@@ -29,12 +29,11 @@ public class Player : MonoBehaviour {
     public float sprintLenght = .1f;
     private bool canSprint = true;
     private float dashMultiplier = 1;
-    public float stunTime = 3f;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        selfCollider = GetComponent<BoxCollider>();
+        selfCollider = GetComponent<CapsuleCollider>();
         Image = GetComponentInChildren<PlayerImage>();
         particleSystem = GetComponentInChildren<ParticleSystem>();
         animator = GetComponentInChildren<Animator>();
@@ -164,7 +163,7 @@ public class Player : MonoBehaviour {
 
             Image.ChangeImageState();
             itemInHands.transform.parent = transform;
-            itemInHands.transform.position = new Vector3(transform.position.x, transform.position.y + selfCollider.size.y / 2, transform.position.z);
+            itemInHands.transform.position = new Vector3(transform.position.x, transform.position.y + selfCollider.height, transform.position.z);
             itemInHands.onPlayer = true;
         }
     }
@@ -191,7 +190,7 @@ public class Player : MonoBehaviour {
     {
         itemInHands = idol;
         itemInHands.transform.parent = transform;
-        itemInHands.transform.position = new Vector3(transform.position.x, transform.position.y + selfCollider.size.y / 2, transform.position.z);
+        itemInHands.transform.position = new Vector3(transform.position.x, transform.position.y + selfCollider.height, transform.position.z);
     }
 
     private void OnDrawGizmos()
