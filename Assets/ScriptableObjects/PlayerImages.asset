@@ -15,4 +15,4 @@ MonoBehaviour:
   Workbench_1: {fileID: 21300000, guid: 3b06ad398e635504190d02c6138a6684, type: 3}
   Workbench_2: {fileID: 21300000, guid: 3913f3801405418458aa13cde766eb2f, type: 3}
   Workbench_3: {fileID: 21300000, guid: 374fd7f363c29064aa11317fd0a7314f, type: 3}
-  Altar: {fileID: 21300000, guid: 180854099f76aad4a9dae7df70820627, type: 3}
+  Altar: {fileID: 21300000, guid: 2fcfb26ef077b114d9f1fb5ebf84e2ca, type: 3}

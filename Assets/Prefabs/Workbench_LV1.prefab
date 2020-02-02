@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5273058115873742365}
   - component: {fileID: 5273058115873742363}
   m_Layer: 11
-  m_Name: Workbench_Pl1Lv1
+  m_Name: Workbench_LV1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -62,8 +62,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.4504066, y: 5.3372917, z: 6.769146}
-  m_Center: {x: -0.3569057, y: 1.1686456, z: -0.45271683}
+  m_Size: {x: 6.4504066, y: 10.149155, z: 6.769146}
+  m_Center: {x: -0.3569057, y: 3.5745773, z: -0.45271683}
 --- !u!1 &5273058117318596225
 GameObject:
   m_ObjectHideFlags: 0
