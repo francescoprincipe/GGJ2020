@@ -19,7 +19,7 @@ public class Idol : MonoBehaviour
         myPlayerIndex = null;
     }
 
-    public void StatusUp()
+    public void StatusUp(int playerIndex)
     {
         switch(level)
         {
@@ -37,11 +37,13 @@ public class Idol : MonoBehaviour
                 }
                 break;
         }
+        myPlayerIndex = playerIndex;
     }
 
     public void Broke()
     {
         status = IdolRepairedStatus.broken;
+        myPlayerIndex = null;
     }
 }
 
