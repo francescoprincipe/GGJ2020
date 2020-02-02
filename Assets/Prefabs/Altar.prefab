@@ -106,7 +106,7 @@ Transform:
   m_GameObject: {fileID: 1580573439820586330}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.78, z: 20.7}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1, z: 1.8}
   m_Children:
   - {fileID: 1580573439382557458}
   - {fileID: 7018376786123565722}
@@ -126,8 +126,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idolManager: {fileID: 0}
-  timerTick: 2
-  itemIterations: 30
+  timerTick: 1
+  itemIterations: 2
+  idolPoint: {x: 18.756685, y: 3.252945, z: 0.7849264}
 --- !u!65 &1580573439820586335
 BoxCollider:
   m_ObjectHideFlags: 0

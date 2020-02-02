@@ -183,16 +183,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1580573439820586328, guid: 11305704f4a15f048b6baa5186abaa7c,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1580573439820586328, guid: 11305704f4a15f048b6baa5186abaa7c,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1.8
-      objectReference: {fileID: 0}
     - target: {fileID: 1580573439820586329, guid: 11305704f4a15f048b6baa5186abaa7c,
         type: 3}
       propertyPath: idolManager
@@ -200,13 +190,8 @@ PrefabInstance:
       objectReference: {fileID: 590617104}
     - target: {fileID: 1580573439820586329, guid: 11305704f4a15f048b6baa5186abaa7c,
         type: 3}
-      propertyPath: itemIterations
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1580573439820586329, guid: 11305704f4a15f048b6baa5186abaa7c,
-        type: 3}
-      propertyPath: timerTick
-      value: 1
+      propertyPath: idolPoint.y
+      value: 6.1226406
       objectReference: {fileID: 0}
     - target: {fileID: 1580573439820586330, guid: 11305704f4a15f048b6baa5186abaa7c,
         type: 3}
@@ -414,6 +399,21 @@ PrefabInstance:
         type: 3}
       propertyPath: timerTick
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580573439820586329, guid: 11305704f4a15f048b6baa5186abaa7c,
+        type: 3}
+      propertyPath: idolPoint.x
+      value: -10.89962
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580573439820586329, guid: 11305704f4a15f048b6baa5186abaa7c,
+        type: 3}
+      propertyPath: idolPoint.z
+      value: -5.398736
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580573439820586329, guid: 11305704f4a15f048b6baa5186abaa7c,
+        type: 3}
+      propertyPath: idolPoint.y
+      value: 5.941492
       objectReference: {fileID: 0}
     - target: {fileID: 1580573439820586330, guid: 11305704f4a15f048b6baa5186abaa7c,
         type: 3}
@@ -866,6 +866,21 @@ PrefabInstance:
         type: 3}
       propertyPath: timerTick
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580573439820586329, guid: 11305704f4a15f048b6baa5186abaa7c,
+        type: 3}
+      propertyPath: idolPoint.z
+      value: -5.14721
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580573439820586329, guid: 11305704f4a15f048b6baa5186abaa7c,
+        type: 3}
+      propertyPath: idolPoint.x
+      value: 10.780182
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580573439820586329, guid: 11305704f4a15f048b6baa5186abaa7c,
+        type: 3}
+      propertyPath: idolPoint.y
+      value: 5.6669846
       objectReference: {fileID: 0}
     - target: {fileID: 1580573439820586330, guid: 11305704f4a15f048b6baa5186abaa7c,
         type: 3}
@@ -2246,6 +2261,16 @@ PrefabInstance:
         type: 3}
       propertyPath: timerTick
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580573439820586329, guid: 11305704f4a15f048b6baa5186abaa7c,
+        type: 3}
+      propertyPath: idolPoint.x
+      value: -18.695177
+      objectReference: {fileID: 0}
+    - target: {fileID: 1580573439820586329, guid: 11305704f4a15f048b6baa5186abaa7c,
+        type: 3}
+      propertyPath: idolPoint.y
+      value: 5.864155
       objectReference: {fileID: 0}
     - target: {fileID: 1580573439820586330, guid: 11305704f4a15f048b6baa5186abaa7c,
         type: 3}

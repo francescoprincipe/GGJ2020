@@ -17,6 +17,8 @@ public class Altar : MonoBehaviour, IInteractable
     private float time;
     private bool timerEnable = false;
 
+    [DraggablePoint] public Vector3 idolPoint;
+
     private void StartTimer()
     {
         timerEnable = true;
@@ -63,7 +65,7 @@ public class Altar : MonoBehaviour, IInteractable
                 player.GiveIdol(idolOnAltar.item);
             }
             idol.transform.parent = transform;
-            idol.transform.position = new Vector3(transform.position.x, transform.position.y + transform.localScale.y / 2, transform.position.z);
+            idol.transform.position = idolPoint;
             idolOnAltar = new IdolOnAltar(idol, player.playerInfo);
             StartTimer();
             return true;
