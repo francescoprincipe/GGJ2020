@@ -146,18 +146,16 @@ public class Player : MonoBehaviour {
             itemInHands = colliders[0].gameObject.GetComponent<Idol>();
             canTakeItems = false;
 
+            if (itemInHands.status == IdolRepairedStatus.broken)
+            {
+                Image.ChangeImageSprite(playerImages.Workbench_1);
+            }
+
             if (itemInHands.myPlayerIndex == playerIndex)
             {
-                if (itemInHands.level == 1)
+                if (itemInHands.status == IdolRepairedStatus.repaired)
                 {
-                    if (itemInHands.status == IdolRepairedStatus.broken)
-                    {
-                        Image.ChangeImageSprite(playerImages.Workbench_1);
-                    }
-                    else if (itemInHands.status == IdolRepairedStatus.repaired)
-                    {
-                        Image.ChangeImageSprite(playerImages.Altar);
-                    }
+                    Image.ChangeImageSprite(playerImages.Altar);
                 }
                 else if (itemInHands.level == 2)
                 {
