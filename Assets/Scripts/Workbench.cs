@@ -1,12 +1,11 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class Workbench : MonoBehaviour, IInteractable
-{
+public class Workbench : MonoBehaviour, IInteractable {
     public WorkbenchImages WorkbenchImages;
     public WorkbenchInput WorkbenchInput;
     public WorkbenchInput WorkbenchInput2;
-    [Range(1,3)]
+    [Range(1, 3)]
     public int workbenchLevel = 1;
 
     private int QTECounter;
@@ -29,7 +28,7 @@ public class Workbench : MonoBehaviour, IInteractable
         {
             List<KeyCode> inputs;
 
-            if(idol.myPlayerIndex == 0)
+            if (idol.myPlayerIndex == 0)
             {
                 inputs = WorkbenchInput.EventButtons;
             }
@@ -49,7 +48,7 @@ public class Workbench : MonoBehaviour, IInteractable
                     EndQuickTimeEvent();
                 }
             }
-            else if (Input.GetAxisRaw(currentPlayer.playerInput.HorizontalInputName) != 0 || Input.GetAxisRaw(currentPlayer.playerInput.VerticalInputName) != 0)
+            else if ((currentPlayer.transform.position - transform.position).sqrMagnitude > 9 * 9)
             {
                 Debug.Log("Moved away from quick time event!");
                 EndQuickTimeEvent();

@@ -11,7 +11,7 @@ public class Player : MonoBehaviour {
     private Idol itemInHands;
     private BoxCollider selfCollider;
     private float evaluatingTime;
-    private bool canTakeItems = true;
+    public bool canTakeItems = true;
 
     private Vector3 currentDirection;
 
@@ -30,6 +30,8 @@ public class Player : MonoBehaviour {
     private bool isSprinting = false;
     private float dashMultiplier = 1;
     public float stunTime = 3f;
+
+    private bool touchingOtherPlayer = false;
 
     void Start()
     {
@@ -100,13 +102,21 @@ public class Player : MonoBehaviour {
 
     private void OnCollisionEnter(Collision other)
     {
-
+        if (other.gameObject.tag == "Player")
+            touchingOtherPlayer = true;
         if (isSprinting && (other.gameObject.tag == "Player"))
         {
             other.gameObject.GetComponent<Player>().Stun();
         }
 
     }
+
+    private void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.tag == "Player")
+            touchingOtherPlayer = false;
+    }
+
     public void Stun()
     {
         StartCoroutine(StunCoroutine());
@@ -129,7 +139,7 @@ public class Player : MonoBehaviour {
             canTakeItems = false;
             itemInHands = colliders[0].gameObject.GetComponent<Idol>();
 
-            if(itemInHands.myPlayerIndex == playerIndex)
+            if (itemInHands.myPlayerIndex == playerIndex)
             {
                 if (itemInHands.level == 1)
                 {
@@ -182,6 +192,11 @@ public class Player : MonoBehaviour {
             itemInHands.transform.parent = transform;
             itemInHands.myPlayerIndex = playerIndex;
             itemInHands.transform.position = new Vector3(transform.position.x, transform.position.y + selfCollider.size.y / 2, transform.position.z);
+        }
+
+        if (touchingOtherPlayer)
+        {
+            
         }
     }
 
