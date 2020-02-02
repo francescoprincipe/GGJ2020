@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 233c9a745882a964fb9bf75e9ff94eb7, type: 3}
+  m_Name: WorkBenchAudioFx
+  m_EditorClassIdentifier: 
+  buildClips:
+  - {fileID: 8300000, guid: a918579a808393143b3cd66784ce17ce, type: 3}
+  - {fileID: 8300000, guid: 09de31c79c1d45c409081084c1e7a7de, type: 3}
+  - {fileID: 8300000, guid: 71126a58f9c8f60499b10cc48721e6e7, type: 3}
+  dashClips:
+  - {fileID: 8300000, guid: 485ed5effb5b6524e887d1612af9a895, type: 3}
+  - {fileID: 8300000, guid: 1b95f30476a60954691789c8e5cf331d, type: 3}
+  - {fileID: 8300000, guid: c538ecba8eaac5d41837a117a824e914, type: 3}
+  destroyClips:
+  - {fileID: 8300000, guid: 9239e4c1ccbd13d4c926f0e99c24ea2d, type: 3}
+  - {fileID: 8300000, guid: 882cb44cfbc6d53499d843a7ecd0f4d5, type: 3}
+  - {fileID: 8300000, guid: 5eafadec805b45744ba284cfdb9e29cc, type: 3}
+  - {fileID: 8300000, guid: c8281c5fc552fdf42b1566a6a62cc786, type: 3}
+  - {fileID: 8300000, guid: 93819eef87e4b394cadec4b3ee038890, type: 3}
+  iteraction: {fileID: 8300000, guid: 3714f146b3d774c4196915f8769f8dd7, type: 3}
+  button: {fileID: 8300000, guid: f158bcdc29738e74d98a8815710fd497, type: 3}

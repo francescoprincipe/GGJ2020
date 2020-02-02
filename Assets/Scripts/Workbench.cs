@@ -5,6 +5,7 @@ public class Workbench : MonoBehaviour, IInteractable {
     public WorkbenchImages WorkbenchImages;
     public WorkbenchInput WorkbenchInput;
     public WorkbenchInput WorkbenchInput2;
+    public AudioFx audioFx;
     [Range(1, 3)]
     public int workbenchLevel = 1;
 
@@ -14,6 +15,7 @@ public class Workbench : MonoBehaviour, IInteractable {
     private bool isInQTE = false;
     private int currentQTECounter = 0;
     private BoxCollider selfCollider;
+    private AudioSource audioSource;
 
     public int maxPlayerDist = 80;
 
@@ -22,6 +24,7 @@ public class Workbench : MonoBehaviour, IInteractable {
     private void Start()
     {
         selfCollider = GetComponent<BoxCollider>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -33,6 +36,8 @@ public class Workbench : MonoBehaviour, IInteractable {
             if (Input.GetKeyDown(inputs[currentKeyCodeIndex]))
             {
                 Debug.Log("Correct");
+                audioSource.clip = audioFx.button;
+                audioSource.Play();
                 PlayQuickTimeEvent();
                 currentQTECounter++;
                 if (currentQTECounter >= QTECounter)
@@ -117,11 +122,14 @@ public class Workbench : MonoBehaviour, IInteractable {
             if (workbenchLevel == 3)
             {
                 idol.Broke();
+                audioSource.clip = audioFx.destroyClips[Random.Range(0, audioFx.buildClips.Count)];
             }
             else
             {
                 idol.StatusUp(currentPlayer.playerIndex);
+                audioSource.clip = audioFx.buildClips[Random.Range(0, audioFx.buildClips.Count)];
             }
+            audioSource.Play();          
         }
         currentQTECounter = 0;
         idol.onPlayer = false;

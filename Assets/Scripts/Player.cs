@@ -6,6 +6,7 @@ public class Player : MonoBehaviour {
     public PlayerInfo playerInfo;
     public PlayerImages playerImages;
     public int playerIndex;
+    public AudioFx audioFx;
 
     private Rigidbody rb;
     private Idol itemInHands;
@@ -14,6 +15,7 @@ public class Player : MonoBehaviour {
     public bool canTakeItems = true;
     private ParticleSystem particleSystem;
     private Animator animator;
+    private AudioSource audioSource;
 
     private Vector3 currentDirection;
 
@@ -37,6 +39,7 @@ public class Player : MonoBehaviour {
         Image = GetComponentInChildren<PlayerImage>();
         particleSystem = GetComponentInChildren<ParticleSystem>();
         animator = GetComponentInChildren<Animator>();
+        audioSource = GetComponent<AudioSource>();
         particleSystem.enableEmission = false;
         playerInfo.points = 0f;
     }
@@ -165,6 +168,8 @@ public class Player : MonoBehaviour {
             itemInHands.transform.parent = transform;
             itemInHands.transform.position = new Vector3(transform.position.x, transform.position.y + selfCollider.height, transform.position.z);
             itemInHands.onPlayer = true;
+            audioSource.clip = audioFx.iteraction;
+            audioSource.Play();
         }
     }
 
@@ -179,6 +184,8 @@ public class Player : MonoBehaviour {
                 if (interactable.SetIdol(itemInHands.GetComponent<Idol>(), this))
                 {
                     Image.ChangeImageState();
+                    audioSource.clip = audioFx.iteraction;
+                    audioSource.Play();
                     canTakeItems = true;
                     itemInHands = null;
                 }
