@@ -13,6 +13,7 @@ public class Player : MonoBehaviour {
     private float evaluatingTime;
     public bool canTakeItems = true;
     private ParticleSystem particleSystem;
+    private Animator animator;
 
     private Vector3 currentDirection;
 
@@ -27,12 +28,8 @@ public class Player : MonoBehaviour {
     public float sprintCooldown = 4f;
     public float sprintLenght = .1f;
     private bool canSprint = true;
-    private bool stunned = false;
-    private bool isSprinting = false;
     private float dashMultiplier = 1;
     public float stunTime = 3f;
-
-    private bool touchingOtherPlayer = false;
 
     void Start()
     {
@@ -40,6 +37,7 @@ public class Player : MonoBehaviour {
         selfCollider = GetComponent<BoxCollider>();
         Image = GetComponentInChildren<PlayerImage>();
         particleSystem = GetComponentInChildren<ParticleSystem>();
+        animator = GetComponentInChildren<Animator>();
         particleSystem.enableEmission = false;
         playerInfo.points = 0f;
     }
@@ -49,12 +47,14 @@ public class Player : MonoBehaviour {
         currentDirection = new Vector3(Input.GetAxisRaw(playerInput.HorizontalInputName), 0f, Input.GetAxisRaw(playerInput.VerticalInputName)).normalized;
         if (currentDirection != Vector3.zero)
         {
+            //animator.Play("Move");
             evaluatingTime += Time.deltaTime;
             particleSystem.enableEmission = true;
         }
         else
         {
             particleSystem.enableEmission = false;
+            //animator.Play("Idle");
         }
 
         if (Input.GetButtonDown(playerInput.InteractionInputName))
@@ -93,11 +93,11 @@ public class Player : MonoBehaviour {
     {
         StartCoroutine(SprintCooldown());
         evaluatingTime = 1;
-        isSprinting = true;
         dashMultiplier = 3;
+        //animator.speed = 1f * dashMultiplier;
         yield return new WaitForSeconds(sprintLenght);
         dashMultiplier = 1;
-        isSprinting = false;
+        //animator.speed = 1f;
     }
 
     private IEnumerator SprintCooldown()
@@ -105,37 +105,6 @@ public class Player : MonoBehaviour {
         canSprint = false;
         yield return new WaitForSeconds(sprintCooldown);
         canSprint = true;
-    }
-
-
-    private void OnCollisionEnter(Collision other)
-    {
-        if (other.gameObject.tag == "Player")
-            touchingOtherPlayer = true;
-        if (isSprinting && (other.gameObject.tag == "Player"))
-        {
-            other.gameObject.GetComponent<Player>().Stun();
-        }
-    }
-
-    private void OnCollisionExit(Collision other)
-    {
-        if (other.gameObject.tag == "Player")
-            touchingOtherPlayer = false;
-    }
-
-    public void Stun()
-    {
-        StartCoroutine(StunCoroutine());
-    }
-    private IEnumerator StunCoroutine()
-    {
-        dashMultiplier = 0;
-        stunned = true;
-        //animazione stun
-        yield return new WaitForSeconds(stunTime);
-        dashMultiplier = 1;
-        stunned = false;
     }
 
     public void Interact()

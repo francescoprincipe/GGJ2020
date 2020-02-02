@@ -1964,7 +1964,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 522e3091d4b91564087173722ec6fc8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerText: {fileID: 0}
+  timerText: {fileID: 680871767}
 --- !u!1 &697111719 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6859151134992444727, guid: 441ec594870477347b3eefff32c9174f,
@@ -4738,7 +4738,7 @@ PrefabInstance:
     - target: {fileID: 8954884338559953372, guid: 51512df7af3d87840884dab29cff318e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 8954884338559953372, guid: 51512df7af3d87840884dab29cff318e,
         type: 3}
@@ -4802,7 +4802,7 @@ PrefabInstance:
     - target: {fileID: 3013119568120561737, guid: fa51e0f694700cb4fad6d9e35914cba8,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 3013119568120561737, guid: fa51e0f694700cb4fad6d9e35914cba8,
         type: 3}

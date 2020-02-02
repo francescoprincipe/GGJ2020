@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour {
@@ -41,9 +42,14 @@ public class Timer : MonoBehaviour {
         time -= Time.deltaTime;
         if (time <= 0)
         {
-            //EndGame();
+            EndGame();
             stopCoroutine = true;
             timerText.text = "0:00";
         }
+    }
+
+    private void EndGame()
+    {
+        SceneManager.LoadScene("EndGame");
     }
 }
