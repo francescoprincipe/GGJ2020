@@ -1,18 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!65 &7824684632280150237
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5998219819087572243}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 79.1474, y: 31.862478, z: 77.93347}
-  m_Center: {x: 0.2036047, y: 15.864234, z: 0.40337086}
 --- !u!1 &2831742210841335631
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +129,7 @@ MonoBehaviour:
   WorkbenchInput: {fileID: 11400000, guid: 75642fc122c6a1f42b22d0323a510f64, type: 2}
   WorkbenchInput2: {fileID: 0}
   workbenchLevel: 3
+  maxPlayerDist: 80
 --- !u!65 &2831742211480854485
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -155,6 +143,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 3, z: 3}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &7824684632280150237
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5998219819087572243}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 79.1474, y: 31.862478, z: 77.93347}
+  m_Center: {x: 0.2036047, y: 15.864234, z: 0.40337086}
 --- !u!1001 &2098743852537624974
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -251,7 +252,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 198600b6cdb522d4f99d18f49bae1b6e, type: 2}
+      objectReference: {fileID: 2100000, guid: 24546450839fbea459e48f4960827793, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: abeea3cc935184c40a7f787b89a272ba, type: 3}
 --- !u!4 &6366551263556113044 stripped
