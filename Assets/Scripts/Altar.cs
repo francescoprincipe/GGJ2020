@@ -63,7 +63,7 @@ public class Altar : MonoBehaviour, IInteractable
                 player.GiveIdol(idolOnAltar.item);
             }
             idol.transform.parent = transform;
-            idol.transform.position = transform.position;
+            idol.transform.position = new Vector3(transform.position.x, transform.position.y + transform.localScale.y / 2, transform.position.z);
             idolOnAltar = new IdolOnAltar(idol, player.playerInfo);
             StartTimer();
             return true;
