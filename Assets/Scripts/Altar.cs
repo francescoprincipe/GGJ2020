@@ -66,6 +66,7 @@ public class Altar : MonoBehaviour, IInteractable
             }
             idol.transform.parent = transform;
             idol.transform.position = idolPoint;
+            idol.onPlayer = false;
             idolOnAltar = new IdolOnAltar(idol, player.playerInfo);
             StartTimer();
             return true;
