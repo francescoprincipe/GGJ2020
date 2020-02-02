@@ -28,16 +28,7 @@ public class Workbench : MonoBehaviour, IInteractable {
     {
         if (isInQTE)
         {
-            List<KeyCode> inputs;
-
-            if (idol.myPlayerIndex == 0)
-            {
-                inputs = WorkbenchInput.EventButtons;
-            }
-            else
-            {
-                inputs = WorkbenchInput2.EventButtons;
-            }
+            List<KeyCode> inputs = GetInputs();
 
             if (Input.GetKeyDown(inputs[currentKeyCodeIndex]))
             {
@@ -73,7 +64,7 @@ public class Workbench : MonoBehaviour, IInteractable {
         switch (workbenchLevel)
         {
             case 1:
-                if (idol.status == IdolRepairedStatus.broken && player.playerIndex == idol.myPlayerIndex)
+                if (idol.status == IdolRepairedStatus.broken)
                 {
                     QTECounter = idol.repairButtonNumber;
                     PlayQuickTimeEvent();
@@ -107,10 +98,9 @@ public class Workbench : MonoBehaviour, IInteractable {
             currentPlayer.Image.ChangeImageState();
             isInQTE = true;
         }
-        int rngNumber = Random.Range(0, WorkbenchInput.EventButtons.Count);
+        int rngNumber = Random.Range(0, GetInputs().Count);
         currentKeyCodeIndex = rngNumber;
         currentPlayer.Image.ChangeImageSprite(WorkbenchImages.EventButtonImages[rngNumber]);
-        Debug.Log(currentKeyCodeIndex);
     }
 
     public void EndQuickTimeEvent()
@@ -125,9 +115,21 @@ public class Workbench : MonoBehaviour, IInteractable {
             }
             else
             {
-                idol.StatusUp();
+                idol.StatusUp(currentPlayer.playerIndex);
             }
         }
         currentQTECounter = 0;
+    }
+
+    private List<KeyCode> GetInputs()
+    {
+        if (currentPlayer.playerIndex == 0)
+        {
+            return WorkbenchInput.EventButtons;
+        }
+        else
+        {
+            return WorkbenchInput2.EventButtons;
+        }
     }
 }

@@ -108,7 +108,6 @@ public class Player : MonoBehaviour {
         {
             other.gameObject.GetComponent<Player>().Stun();
         }
-
     }
 
     private void OnCollisionExit(Collision other)
@@ -190,7 +189,6 @@ public class Player : MonoBehaviour {
 
             Image.ChangeImageState();
             itemInHands.transform.parent = transform;
-            itemInHands.myPlayerIndex = playerIndex;
             itemInHands.transform.position = new Vector3(transform.position.x, transform.position.y + selfCollider.size.y / 2, transform.position.z);
         }
 
