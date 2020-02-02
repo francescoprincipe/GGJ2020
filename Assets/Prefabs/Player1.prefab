@@ -5138,7 +5138,6 @@ MonoBehaviour:
     m_Bits: 7168
   sprintCooldown: 4
   sprintLenght: 0.1
-  stunTime: 3
 --- !u!54 &8954884338559953375
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5168,4 +5167,4 @@ CapsuleCollider:
   m_Radius: 1.7802365
   m_Height: 9.189987
   m_Direction: 1
-  m_Center: {x: 0, y: 4.0949936, z: -0.11}
+  m_Center: {x: 0, y: 4.1, z: -0.11}
