@@ -193,11 +193,6 @@ public class Player : MonoBehaviour {
             itemInHands.myPlayerIndex = playerIndex;
             itemInHands.transform.position = new Vector3(transform.position.x, transform.position.y + selfCollider.size.y / 2, transform.position.z);
         }
-
-        if (touchingOtherPlayer)
-        {
-            
-        }
     }
 
     public void Release()
