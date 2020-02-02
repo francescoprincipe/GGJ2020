@@ -127,7 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   idolManager: {fileID: 0}
   timerTick: 2
-  itemIterations: 5
+  itemIterations: 30
 --- !u!65 &1580573439820586335
 BoxCollider:
   m_ObjectHideFlags: 0

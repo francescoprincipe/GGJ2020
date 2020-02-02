@@ -137,10 +137,6 @@ public class Player : MonoBehaviour {
         if (colliders.Length > 0 && canTakeItems)
         {
             itemInHands = colliders[0].gameObject.GetComponent<Idol>();
-            if (itemInHands.myPlayerIndex != null && itemInHands.myPlayerIndex != playerIndex)
-            {
-                return;
-            }
             canTakeItems = false;
 
             if (itemInHands.myPlayerIndex == playerIndex)

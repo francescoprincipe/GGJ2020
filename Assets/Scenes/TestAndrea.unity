@@ -1096,6 +1096,7 @@ GameObject:
   - component: {fileID: 680871769}
   - component: {fileID: 680871768}
   - component: {fileID: 680871767}
+  - component: {fileID: 680871770}
   m_Layer: 5
   m_Name: Timer
   m_TagString: Untagged
@@ -1240,6 +1241,19 @@ RectTransform:
   m_AnchoredPosition: {x: 27.600006, y: -18}
   m_SizeDelta: {x: 30, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &680871770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 680871766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 522e3091d4b91564087173722ec6fc8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerText: {fileID: 680871767}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -3249,6 +3263,31 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5273058115873742363, guid: e1437b212c9d9a6478baca1c06ac4cf0,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 8.114689
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273058115873742363, guid: e1437b212c9d9a6478baca1c06ac4cf0,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.10872078
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273058115873742363, guid: e1437b212c9d9a6478baca1c06ac4cf0,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 8.094521
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273058115873742363, guid: e1437b212c9d9a6478baca1c06ac4cf0,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.22388077
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273058115873742363, guid: e1437b212c9d9a6478baca1c06ac4cf0,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5273058115873742364, guid: e1437b212c9d9a6478baca1c06ac4cf0,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3326,6 +3365,12 @@ PrefabInstance:
       propertyPath: workbenchLevel
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5273058115873742365, guid: e1437b212c9d9a6478baca1c06ac4cf0,
+        type: 3}
+      propertyPath: WorkbenchInput2
+      value: 
+      objectReference: {fileID: 11400000, guid: 1fdf0b350a2b6334e8bbb48339000a7f,
+        type: 2}
     - target: {fileID: 5273058115873742366, guid: e1437b212c9d9a6478baca1c06ac4cf0,
         type: 3}
       propertyPath: m_Name
@@ -3569,6 +3614,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013119568120561742, guid: fa51e0f694700cb4fad6d9e35914cba8,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224141503732977296, guid: fa51e0f694700cb4fad6d9e35914cba8,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.20999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224141503732977296, guid: fa51e0f694700cb4fad6d9e35914cba8,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1.9099998
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224141503732977296, guid: fa51e0f694700cb4fad6d9e35914cba8,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224141503732977296, guid: fa51e0f694700cb4fad6d9e35914cba8,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.97682494
+      objectReference: {fileID: 0}
+    - target: {fileID: 7224141503732977296, guid: fa51e0f694700cb4fad6d9e35914cba8,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.38703734
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa51e0f694700cb4fad6d9e35914cba8, type: 3}

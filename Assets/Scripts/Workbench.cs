@@ -15,6 +15,8 @@ public class Workbench : MonoBehaviour, IInteractable {
     private int currentQTECounter = 0;
     private BoxCollider selfCollider;
 
+    public int maxPlayerDist = 80;
+
     private Idol idol;
 
     private void Start()
@@ -48,7 +50,7 @@ public class Workbench : MonoBehaviour, IInteractable {
                     EndQuickTimeEvent();
                 }
             }
-            else if ((currentPlayer.transform.position - transform.position).sqrMagnitude > 9 * 9)
+            else if ((currentPlayer.transform.position - transform.position).sqrMagnitude > maxPlayerDist)
             {
                 Debug.Log("Moved away from quick time event!");
                 EndQuickTimeEvent();
