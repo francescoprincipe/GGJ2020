@@ -16,7 +16,7 @@ public class Idol : MonoBehaviour
 
     private Dictionary<int, GameObject> statusObjects = new Dictionary<int, GameObject>();
 
-    private void Start()
+    private void Awake()
     {
         var objects = GetComponentsInChildren<Transform>();
 
@@ -43,6 +43,7 @@ public class Idol : MonoBehaviour
     {
         status = IdolRepairedStatus.broken;
         myPlayerIndex = null;
+        SetView();
     }
 
     public void StatusUp(int playerIndex)
