@@ -48,8 +48,11 @@ public class Workbench : MonoBehaviour, IInteractable {
             }
             else if (Input.anyKeyDown)
             {
-                Debug.Log("Not correct!");
-                PlayQuickTimeEvent();
+                if (currentPlayer.playerIndex == idol.myPlayerIndex)
+                {
+                    Debug.Log("Not correct!");
+                    PlayQuickTimeEvent();
+                }
             }
         }
     }
