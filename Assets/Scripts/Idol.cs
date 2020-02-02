@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Idol : MonoBehaviour
 {
@@ -12,6 +13,31 @@ public class Idol : MonoBehaviour
 
     [HideInInspector]
     public int? myPlayerIndex = null;
+
+    private Dictionary<int, GameObject> statusObjects = new Dictionary<int, GameObject>();
+
+    private void Start()
+    {
+        var objects = GetComponentsInChildren<Transform>();
+
+        for(int i = 0; i < objects.Length; i++)
+        {
+            switch(objects[i].tag)
+            {
+                case "Reparied":
+                    statusObjects.Add((int)IdolRepairedStatus.repaired, objects[i].gameObject);
+                    break;
+                case "Broken":
+                    statusObjects.Add((int)IdolRepairedStatus.broken, objects[i].gameObject);
+                    break;
+                case "SemiBroken":
+                    statusObjects.Add((int)IdolRepairedStatus.semiBroken, objects[i].gameObject);
+                    break;
+            }
+        }
+
+        SetView();
+    }
 
     public void ResetStats()
     {
@@ -38,12 +64,26 @@ public class Idol : MonoBehaviour
                 break;
         }
         myPlayerIndex = playerIndex;
+        SetView();
     }
 
     public void Broke()
     {
         status = IdolRepairedStatus.broken;
         myPlayerIndex = null;
+        SetView();
+    }
+
+    private void SetView()
+    {
+        statusObjects[(int)status].GetComponent<MeshRenderer>().enabled = true;
+        foreach (var i in statusObjects)
+        {
+            if (i.Key != (int)status)
+            {
+                i.Value.GetComponent<MeshRenderer>().enabled = false;
+            }
+        }
     }
 }
 

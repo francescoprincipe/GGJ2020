@@ -3445,6 +3445,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8954884338559953374, guid: 51512df7af3d87840884dab29cff318e,
+        type: 3}
+      propertyPath: MovementSpeed.m_Curve.Array.data[0].value
+      value: 41.509445
+      objectReference: {fileID: 0}
+    - target: {fileID: 8954884338559953374, guid: 51512df7af3d87840884dab29cff318e,
+        type: 3}
+      propertyPath: MovementSpeed.m_Curve.Array.data[0].time
+      value: -0.029166667
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 51512df7af3d87840884dab29cff318e, type: 3}
 --- !u!1001 &3432794494856148933
